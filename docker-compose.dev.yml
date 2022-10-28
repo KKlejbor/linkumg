@@ -6,10 +6,10 @@ networks:
 
 services:
   server:
+    command: tail -f /dev/null
     container_name: linkumg_server
-    build:
-      context: server
-      dockerfile: Dockerfile.dev
+    image: maven:3.8.5-openjdk-17
+    tty: true
     volumes:
       - ./server:/app
     stdin_open: true
@@ -17,7 +17,7 @@ services:
       - 8080:8080
     networks:
       - server
-      
+
   client:
     command: "yarn start"
     container_name: linkumg_client
@@ -33,4 +33,3 @@ services:
       - /home/node/ui/node_modules
     networks:
       - client
-
