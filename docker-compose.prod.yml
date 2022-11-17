@@ -1,0 +1,29 @@
+version: "3.8"
+
+networks:
+  server:
+  client:
+
+services:
+  # server:
+  #   command: tail -f /dev/null
+  #   container_name: linkumg_server
+  #   image: maven:3.8.5-openjdk-17
+  #   tty: true
+  #   volumes:
+  #     - ./server:/app
+  #   stdin_open: true
+  #   ports:
+  #     - 8080:8080
+  #   networks:
+  #     - server
+
+  client-prod:
+    container_name: linkumg_client
+    build:
+      context: client
+      dockerfile: Dockerfile.prod
+    ports:
+      - 4173:80
+    networks:
+      - client
