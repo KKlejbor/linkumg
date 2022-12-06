@@ -1,22 +1,35 @@
 version: "3.8"
 
 networks:
-  server:
-  client:
+  api:
+  postgres:
 
 services:
-  # server:
-  #   command: tail -f /dev/null
-  #   container_name: linkumg_server
-  #   image: maven:3.8.5-openjdk-17
-  #   tty: true
-  #   volumes:
-  #     - ./server:/app
-  #   stdin_open: true
-  #   ports:
-  #     - 8080:8080
-  #   networks:
-  #     - server
+  server:
+    container_name: linkumg_server
+    build:
+      context: server
+      dockerfile: Dockerfile.prod
+    volumes:
+      - ./server:/app
+      - ./images:/images
+    networks:
+      - api
+      - postgres
+
+  db:
+    image: postgres
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+      POSTGRES_DB: linkumg
+    volumes:
+      - ./postgres:/data/postgres
+    networks:
+      - postgres
+    restart: unless-stopped
 
   client-prod:
     container_name: linkumg_client
@@ -26,4 +39,4 @@ services:
     ports:
       - 4173:80
     networks:
-      - client
+      - api
