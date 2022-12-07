@@ -12,7 +12,8 @@ services:
       dockerfile: Dockerfile.prod
     volumes:
       - ./server:/app
-      - ./images:/images
+      - ./images/users:/images/users
+      - ./images/announcements:/images/announcements
     networks:
       - api
       - postgres
