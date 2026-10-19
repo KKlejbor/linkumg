@@ -1,6 +1,6 @@
 [submodule "server"]
 	path = server
-	url = https://github.com/Olavq/linkumg-server.git
+	url = https://github.com/KKlejbor/linkumg-server.git
 [submodule "client"]
 	path = client
-	url = https://github.com/Olavq/linkumg-client.git
+	url = https://github.com/KKlejbor/linkumg-client.git
