@@ -4,6 +4,9 @@ W celu uruchomienia aplikacji należy zainstalować oprogramowanie Docker, a nas
 docker compose -f docker-compose.prod.yml build
 docker compose -f docker-compose.prod.yml up -d
 ```
+
+Następnie należy wpisać do przeglądarki `localhost`. Jeśli aplikacja nie zadziała za pierwszym razem należy zatrzymać aplikacja i uruchomić ją ponownie
+
 Po chwili aplikacja powinna zostać uruchomiona. Z utworzonym domyślnym kontem administratora.
 
 W celu zatrzymania aplikacji należy wykonać polecenie:
